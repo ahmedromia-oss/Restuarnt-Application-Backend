@@ -1,0 +1,2847 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  /api/create-cart:
+    post:
+      summary: 'Create cart'
+      description: 'Create a new cart to place items in'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  errNum: 200
+                  msg: 'cart created'
+                  'cart details':
+                    user_id: '3'
+                    total_price: 0
+                    status: false
+                    updated_at: '2021-09-02T13:04:33.000000Z'
+                    created_at: '2021-09-02T13:04:33.000000Z'
+                    id: 9
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  errNum:
+                    type: integer
+                    example: 200
+                  msg:
+                    type: string
+                    example: 'cart created'
+                  'cart details':
+                    type: object
+                    example:
+                      user_id: '3'
+                      total_price: 0
+                      status: false
+                      updated_at: '2021-09-02T13:04:33.000000Z'
+                      created_at: '2021-09-02T13:04:33.000000Z'
+                      id: 9
+      tags:
+        - 'Cart Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                User_id:
+                  type: integer
+                  description: 'The ID of the user who''s account is associated with this cart'
+                  example: 13
+              required:
+                - User_id
+      security: []
+  /api/add-to-cart:
+    post:
+      summary: 'Add to cart'
+      description: 'add a new item to the cart'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  errNum: 200
+                  msg: 'Item Added Successfully'
+                  'cart details':
+                    id: 5
+                    user_id: 3
+                    total_price: 66
+                    status: 'false'
+                    created_at: '2021-08-19T09:51:01.000000Z'
+                    updated_at: '2021-09-02T12:30:43.000000Z'
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  errNum:
+                    type: integer
+                    example: 200
+                  msg:
+                    type: string
+                    example: 'Item Added Successfully'
+                  'cart details':
+                    type: object
+                    example:
+                      id: 5
+                      user_id: 3
+                      total_price: 66
+                      status: 'false'
+                      created_at: '2021-08-19T09:51:01.000000Z'
+                      updated_at: '2021-09-02T12:30:43.000000Z'
+      tags:
+        - 'Cart Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cart_id:
+                  type: integer
+                  description: 'The id of the cart to which the item will be added'
+                  example: 5
+                item_id:
+                  type: integer
+                  description: 'The id of the item that needs to be added'
+                  example: 19
+              required:
+                - cart_id
+                - item_id
+      security: []
+  /api/remove-from-cart:
+    post:
+      summary: 'Remove from cart'
+      description: 'Remove an item from the cart'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Cart Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cart_id:
+                  type: integer
+                  description: 'The id of the cart that will be modified'
+                  example: 2
+                item_id:
+                  type: integer
+                  description: "The id of the item that needs to be removed\n\n @response scenario=success {\n   \"status\": true,\n   \"errNum\": 200,\n   \"msg\": \"Item Removed Successfully\",\n   \"cart details\": {\n       \"id\": 5,\n       \"user_id\": 3,\n       \"total_price\": 54,\n       \"status\": \"false\",\n       \"created_at\": \"2021-08-19T09:51:01.000000Z\",\n       \"updated_at\": \"2021-09-02T12:51:23.000000Z\"\n   }\n}"
+                  example: 11
+              required:
+                - cart_id
+                - item_id
+      security: []
+  /api/view-cart:
+    post:
+      summary: 'List cart items'
+      description: 'lists all items in the cart and their quantity'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Cart Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cart_id:
+                  type: integer
+                  description: "The id of the cart that will be modified\n\n\n @response scenario=success {\n \"status\": true,\n \"response\": 200,\n \"msg\": \"Items retrieved\",\n \"cart items\": [\n  {\n     \"quantity\": 2,\n    \"item\": [\n       {\n           \"id\": 1,\n           \"item_name\": \"pizza\",\n           \"category_id\": 1,\n           \"rating\": 0,\n           \"price\": \"15.00\",\n           \"offer\": null,\n           \"offer_end_date\": null,\n           \"created_at\": null,\n           \"updated_at\": null\n          }\n      ]\n  }\n}"
+                  example: 2
+              required:
+                - cart_id
+      security: []
+  /api/add-complaint:
+    post:
+      summary: 'Add complaint'
+      description: 'This endpoint allows you to add complaint to specific item in the order.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\": true,\n \"response\": 200\n \"data\": The whole complaint after adding it\n}"
+      tags:
+        - 'Complaints Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  description: 'to place the complaint to that specfic item'
+                  example: 6
+                user_id:
+                  type: integer
+                  description: 'to make sure that we know who wrote the complaint'
+                  example: 17
+                complaint:
+                  type: string
+                  description: 'the complaint statement'
+                  example: non
+              required:
+                - item_id
+                - user_id
+                - complaint
+      security: []
+  /api/remove-complaint:
+    post:
+      summary: 'Remove complaint'
+      description: 'This endpoint allows you to remove complaint from specific item in the order.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  response: 200
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  response:
+                    type: integer
+                    example: 200
+      tags:
+        - 'Complaints Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item_id:
+                  type: integer
+                  description: 'to place the complaint to that specfic item'
+                  example: 3
+                user_id:
+                  type: integer
+                  description: 'to make sure that we know who wrote the complaint'
+                  example: 19
+                complaint:
+                  type: string
+                  description: 'The complaint statement'
+                  example: quo
+              required:
+                - item_id
+                - user_id
+                - complaint
+      security: []
+  /api/show-complaints:
+    post:
+      summary: 'Show all the complaints found in the system.'
+      description: 'This endpoint allows you to see all the complaints found in the system.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n complaints\n}"
+      tags:
+        - 'Complaints Management'
+      security: []
+  /api/register:
+    get:
+      summary: 'Display the user registration view.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'this is the user register form view'
+                properties:
+                  message:
+                    type: string
+                    example: 'this is the user register form view'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Handle an incoming user registration request.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Successfully created your account, just verify it at your email !'
+                  user:
+                    first_name: mariam
+                    last_name: elkhashab
+                    email: m@hotmail.com
+                    updated_at: '2021-08-30T13:28:25.000000Z'
+                    created_at: '2021-08-30T13:28:25.000000Z'
+                    id: 25
+                  'AccessToken:': eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTYzMDMzMDEwNSwiZXhwIjoxNjMwMzMzNzA1LCJuYmYiOjE2MzAzMzAxMDUsImp0aSI6ImFQV1ExUmZyTDJhZXl2RmEiLCJzdWIiOjI1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Gb6pauP14JnqtlmZ4-GIrUJJwY34HGqmwGyXTr35zKI
+                properties:
+                  message:
+                    type: string
+                    example: 'Successfully created your account, just verify it at your email !'
+                  user:
+                    type: object
+                    example:
+                      first_name: mariam
+                      last_name: elkhashab
+                      email: m@hotmail.com
+                      updated_at: '2021-08-30T13:28:25.000000Z'
+                      created_at: '2021-08-30T13:28:25.000000Z'
+                      id: 25
+                  'AccessToken:':
+                    type: string
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTYzMDMzMDEwNSwiZXhwIjoxNjMwMzMzNzA1LCJuYmYiOjE2MzAzMzAxMDUsImp0aSI6ImFQV1ExUmZyTDJhZXl2RmEiLCJzdWIiOjI1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Gb6pauP14JnqtlmZ4-GIrUJJwY34HGqmwGyXTr35zKI
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: ''
+                  example: aut
+                last_name:
+                  type: string
+                  description: ''
+                  example: eligendi
+                email:
+                  type: string
+                  description: ''
+                  example: iste
+                password:
+                  type: string
+                  description: ''
+                  example: qui
+                password_confirmation:
+                  type: string
+                  description: ''
+                  example: sed
+              required:
+                - first_name
+                - last_name
+                - email
+                - password
+                - password_confirmation
+      security: []
+  /api/login:
+    get:
+      summary: 'Display the user login view.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'this is the user login form page'
+                properties:
+                  message:
+                    type: string
+                    example: 'this is the user login form page'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Handle an incoming user login request.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'logged in successfully'
+                  'AccessToken:': eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMDMzMDU2NSwiZXhwIjoxNjMwMzM0MTY1LCJuYmYiOjE2MzAzMzA1NjUsImp0aSI6Ik1GQndmSzl3OVM5T1UyWEkiLCJzdWIiOjI1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.xxpKgqW5NUZ9OXFXy3AHIPw22H_ivI3KOgblbKDAaoc
+                properties:
+                  message:
+                    type: string
+                    example: 'logged in successfully'
+                  'AccessToken:':
+                    type: string
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMDMzMDU2NSwiZXhwIjoxNjMwMzM0MTY1LCJuYmYiOjE2MzAzMzA1NjUsImp0aSI6Ik1GQndmSzl3OVM5T1UyWEkiLCJzdWIiOjI1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.xxpKgqW5NUZ9OXFXy3AHIPw22H_ivI3KOgblbKDAaoc
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: ''
+                  example: beatae
+                password:
+                  type: string
+                  description: ''
+                  example: consequatur
+                remember:
+                  type: boolean
+                  description: ''
+                  example: true
+              required:
+                - email
+                - password
+      security: []
+  /api/forgot-password:
+    get:
+      summary: 'Display the password reset link request view.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  msg: 'This is the password reset link request form'
+                properties:
+                  msg:
+                    type: string
+                    example: 'This is the password reset link request form'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Handle an incoming password reset link request.'
+      description: "This api handles the form submission\nWe will send the password reset link to this user. Once we have attempted\nto send the link, we will examine the response then see the message we\nneed to show to the user. Finally, we'll send out a proper response."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\",\n\"We have emailed your password reset link!\"\n}"
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: ''
+                  example: est
+              required:
+                - email
+      security: []
+  '/api/reset-password/{token}':
+    get:
+      summary: 'Display the password reset view.'
+      description: 'should contain email, new password & password confirmation fields'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  msg: 'This is the reset password form'
+                properties:
+                  msg:
+                    type: string
+                    example: 'This is the reset password form'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: token
+        description: ''
+        example: maiores
+        required: true
+        schema:
+          type: string
+  /api/reset-password:
+    post:
+      summary: 'Handle an incoming new password request.'
+      description: "This api handles the form submission\nHere we will attempt to reset the user's password. If it is successful we\nwill update the password on an actual user model and persist it to the\ndatabase. Otherwise we will parse the error and return the response."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  msg: 'this is the user login form, login with the new password '
+                  '0': status
+                  '1': 'Your password has been reset!'
+                properties:
+                  msg:
+                    type: string
+                    example: 'this is the user login form, login with the new password '
+                  0:
+                    type: string
+                    example: status
+                  1:
+                    type: string
+                    example: 'Your password has been reset!'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: mixed
+                  description: ''
+                  example: veniam
+                emai:
+                  type: string
+                  description: ''
+                  example: placeat
+                password:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                password_confirmation:
+                  type: string
+                  description: ''
+                  example: eveniet
+              required:
+                - token
+                - emai
+                - password
+                - password_confirmation
+      security: []
+  /api/verify-email:
+    get:
+      summary: 'Display the user email verification prompt.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+  '/api/verify-email/{id}/{hash}':
+    get:
+      summary: 'Mark the authenticated user''s email address as verified.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  msg: 'Successfully verified'
+                  '0': 201
+                properties:
+                  msg:
+                    type: string
+                    example: 'Successfully verified'
+                  0:
+                    type: integer
+                    example: 201
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the verify email.'
+        example: dolore
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: hash
+        description: ''
+        example: qui
+        required: true
+        schema:
+          type: string
+  /api/email/verification-notification:
+    post:
+      summary: 'Send a new email verification notification.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  msg: verification-link-sent
+                  '0': 201
+                properties:
+                  msg:
+                    type: string
+                    example: verification-link-sent
+                  0:
+                    type: integer
+                    example: 201
+      tags:
+        - Endpoints
+  /api/logout:
+    post:
+      summary: 'User logout'
+      description: 'Destroy an authenticated user session.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+  /api/admin/login:
+    get:
+      summary: 'Display the admin login view.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'this is the admin login form page'
+                properties:
+                  message:
+                    type: string
+                    example: 'this is the admin login form page'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Handle an incoming admin login request.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'logged in successfully'
+                  'AccessToken:': eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hZG1pblwvbG9naW4iLCJpYXQiOjE2MzAzMzE5NTIsImV4cCI6MTYzMDMzNTU1MiwibmJmIjoxNjMwMzMxOTUyLCJqdGkiOiJRQjc0UnNIVjBKaldadG9GIiwic3ViIjoxLCJwcnYiOiJkZjg4M2RiOTdiZDA1ZWY4ZmY4NTA4MmQ2ODZjNDVlODMyZTU5M2E5In0.ASySa0_mm7wqeSdAsAhpWGkuD2_oAafoduHBnh4tsJs
+                properties:
+                  message:
+                    type: string
+                    example: 'logged in successfully'
+                  'AccessToken:':
+                    type: string
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hZG1pblwvbG9naW4iLCJpYXQiOjE2MzAzMzE5NTIsImV4cCI6MTYzMDMzNTU1MiwibmJmIjoxNjMwMzMxOTUyLCJqdGkiOiJRQjc0UnNIVjBKaldadG9GIiwic3ViIjoxLCJwcnYiOiJkZjg4M2RiOTdiZDA1ZWY4ZmY4NTA4MmQ2ODZjNDVlODMyZTU5M2E5In0.ASySa0_mm7wqeSdAsAhpWGkuD2_oAafoduHBnh4tsJs
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: ''
+                  example: totam
+                password:
+                  type: string
+                  description: ''
+                  example: non
+              required:
+                - email
+                - password
+  /api/admin/admins:
+    get:
+      summary: 'getting all admins in the database'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'the user is a superadmin'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  {\n  \"id\": \"1\" ,\n  \"email\":\"steve@gmail.com\" ,\n  \"username\":\"steve\" ,\n  \"superadmin\":\"1\"\n  }\n  {\n  \"id\": \"2\" ,\n  \"email\":\"sara@gmail.com\" ,\n  \"username\":\"sara\" ,\n  \"superadmin\":\"0\"\n  }\n}"
+        401:
+          description: 'the user isn''t a superadmin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: unauthorized
+      tags:
+        - Endpoints
+      security: []
+  '/api/admin/admins/{id}':
+    get:
+      summary: 'getting a certain admin in the database by the id'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'the user is a superadmin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: '1'
+                  email: steve@gmail.com
+                  username: steve
+                  superadmin: '1'
+                properties:
+                  id:
+                    type: string
+                    example: '1'
+                  email:
+                    type: string
+                    example: steve@gmail.com
+                  username:
+                    type: string
+                    example: steve
+                  superadmin:
+                    type: string
+                    example: '1'
+        401:
+          description: 'the user isn''t a superadmin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: unauthorized
+        404:
+          description: 'the admin by the given id is not found'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the admin'
+        example: 13
+        required: true
+        schema:
+          type: integer
+  /api/admin/register:
+    get:
+      summary: 'Display the admin registration view.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Handle an incoming admin registration request.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'registered successfully'
+                  'AccessToken:': eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hZG1pblwvcmVnaXN0ZXIiLCJpYXQiOjE2MzAzMzE5OTQsImV4cCI6MTYzMDMzNTU5NCwibmJmIjoxNjMwMzMxOTk0LCJqdGkiOiJwMGFQcVpUUlQyYW5rT3RjIiwic3ViIjoyNCwicHJ2IjoiZGY4ODNkYjk3YmQwNWVmOGZmODUwODJkNjg2YzQ1ZTgzMmU1OTNhOSJ9.FuZ92MotjJPJv7ebj15zv4Do1ER0_mwUKXhW8J9mDK8
+                properties:
+                  message:
+                    type: string
+                    example: 'registered successfully'
+                  'AccessToken:':
+                    type: string
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hZG1pblwvcmVnaXN0ZXIiLCJpYXQiOjE2MzAzMzE5OTQsImV4cCI6MTYzMDMzNTU5NCwibmJmIjoxNjMwMzMxOTk0LCJqdGkiOiJwMGFQcVpUUlQyYW5rT3RjIiwic3ViIjoyNCwicHJ2IjoiZGY4ODNkYjk3YmQwNWVmOGZmODUwODJkNjg2YzQ1ZTgzMmU1OTNhOSJ9.FuZ92MotjJPJv7ebj15zv4Do1ER0_mwUKXhW8J9mDK8
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: ''
+                  example: suscipit
+                username:
+                  type: string
+                  description: ''
+                  example: quis
+                password:
+                  type: string
+                  description: ''
+                  example: repellendus
+                password_confirmation:
+                  type: string
+                  description: ''
+                  example: minus
+                superadmin:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - email
+                - username
+                - password
+                - password_confirmation
+  /api/admin/logout:
+    post:
+      summary: 'Admin logout'
+      description: 'Destroy an authenticated admin session (logout).'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+  '/api/admin/updateadmin/{id}':
+    post:
+      summary: 'updating a certain admin with id from the database'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'the user is a superadmin'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        401:
+          description: 'the user isn''t a superadmin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: unauthorized
+        404:
+          description: 'the admin by the given id was not found'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        422:
+          description: 'The request was well formed but was unable to be followed due to a validation error'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                superadmin:
+                  type: boolean
+                  description: ''
+                  example: true
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the admin'
+        example: 13
+        required: true
+        schema:
+          type: integer
+  '/api/admin/removeadmin/{id}':
+    post:
+      summary: 'removing a certain admin with id from the database'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'the user is a superadmin'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        401:
+          description: 'the user isn''t a superadmin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: unauthorized
+        404:
+          description: 'the admin with the given id was not found'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the admin'
+        example: 6
+        required: true
+        schema:
+          type: integer
+  /api/admin/addcategory:
+    post:
+      summary: 'adding category to the database'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'the user is an admin and the inputs are satisfied with the validation rules'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        401:
+          description: 'the user isn''t an admin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: unauthorized
+        422:
+          description: 'The request was well formed but was unable to be followed due to a validation error'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category_name:
+                  type: required
+                  description: 'string and must be unique'
+                  example: et
+      security: []
+  '/api/admin/removecategory/{id}':
+    post:
+      summary: 'removing a certain category with id from the database'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'the user is an admin'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        401:
+          description: 'the user isn''t an admin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: unauthorized
+        404:
+          description: 'the category with the given id is not found'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the category'
+        example: 18
+        required: true
+        schema:
+          type: integer
+  '/api/admin/updatecategory/{id}':
+    post:
+      summary: 'updating a certain category with id in the database'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'the user is an admin and the inputs are satisfied with the validation rules'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        401:
+          description: 'the user isn''t an admin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: unauthorized
+        404:
+          description: 'the category with the given id was not found'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        422:
+          description: 'The request was well formed but was unable to be followed due to a validation error'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category_name:
+                  type: string
+                  description: 'and must be unique'
+                  example: maiores
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the category'
+        example: 15
+        required: true
+        schema:
+          type: integer
+  /api/admin/additem:
+    post:
+      summary: 'adding item to the database'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'the user is an admin and the inputs are satisfied with the validation rules'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        401:
+          description: 'the user isn''t an admin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: unauthorized
+        422:
+          description: 'The request was well formed but was unable to be followed due to a validation error'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                item_name:
+                  type: string
+                  description: 'and must be unique with 40 chrachters at maximum'
+                  example: ipsum
+                category_id:
+                  type: integer
+                  description: 'and it must exist'
+                  example: 12
+                price:
+                  type: decimal
+                  description: ''
+                  example: natus
+                offer:
+                  type: decimal
+                  description: 'if there was an offer_end_date'
+                  example: tempora
+                offer_end_date:
+                  type: datetime
+                  description: 'if there was an offer'
+                  example: deleniti
+                file_path:
+                  type: string
+                  format: binary
+                  description: ''
+              required:
+                - item_name
+                - category_id
+                - price
+                - offer
+                - offer_end_date
+      security: []
+  '/api/admin/removeitem/{id}':
+    post:
+      summary: 'removing a certain item with id from the database'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'the user is an admin'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        401:
+          description: 'the user isn''t an admin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: unauthorized
+        404:
+          description: 'the item with the given id is not found'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the item'
+        example: 19
+        required: true
+        schema:
+          type: integer
+  '/api/admin/updateitem/{id}':
+    post:
+      summary: 'updating a certain item with id in the database'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'the user is an admin and the inputs are satisfied with the validation rules'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        401:
+          description: 'the user isn''t an admin'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: unauthorized
+                properties:
+                  message:
+                    type: string
+                    example: unauthorized
+        404:
+          description: 'the item with the given id was not found'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+        422:
+          description: 'The request was well formed but was unable to be followed due to a validation error'
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the item'
+        example: 16
+        required: true
+        schema:
+          type: integer
+  /api/admin/verify-email:
+    get:
+      summary: 'Display the admin email verification prompt.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+  '/api/admin/verify-email/{id}/{hash}':
+    get:
+      summary: 'Mark the authenticated admin''s email address as verified.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the verify email.'
+        example: non
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: hash
+        description: ''
+        example: accusantium
+        required: true
+        schema:
+          type: string
+  /api/admin/email/verification-notification:
+    post:
+      summary: 'Send a new email verification notification.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+  /api/admin/show:
+    get:
+      summary: 'getting all orders in database'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "scenario=\n{\n\n\n \"id\": 1,\n \"user_id\": 1,\n\n\"price\": \"20.20\",\n\"type_of_delivery\": \"Take Away\",\n\"created_at\": null,\n\"updated_at\": null,\n\"rating\": \"5.00\",\n\"Feedback\": \"good\"\n },\n{\n\"id\": 2,\n\"user_id\": 1,\n\"price\": \"20.20\",\n\"type_of_delivery\": \"Take Away\",\n\"created_at\": null,\n\"updated_at\": null,\n\"rating\": \"5.00\",\n\"Feedback\": \"good\"\n\n*},"
+      tags:
+        - Endpoints
+      security: []
+  /api/admin/search:
+    get:
+      summary: 'get all the orders of a specific user'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/admin/total:
+    get:
+      summary: 'get the total number of orders'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/admin/piechart:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/admin/sort:
+    get:
+      summary: 'get the 4 most selling item'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/admin/add:
+    get:
+      summary: 'Invoke the controller method.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'create a new table with the state'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                table:
+                  type: state
+                  description: 'string required The state of the table to which the table will be added'
+                  example: voluptatibus
+      security: []
+  /api/admin/list:
+    get:
+      summary: 'shows all the tables with their state'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  '/api/admin/update/{id}':
+    get:
+      summary: 'select the wanted table to change it''s state'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the selected table'
+        example: 12
+        required: true
+        schema:
+          type: integer
+  /api/admin/update:
+    post:
+      summary: 'update the table state'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: of
+                  description: 'the table'
+                  example: non
+                state:
+                  type: the
+                  description: 'new wanted state to update'
+                  example: debitis
+      security: []
+  /api/store:
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/destroy:
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/review-iteam:
+    post:
+      summary: 'Add item Feedback Rating to the order.'
+      description: "This endpoint allows user to add feedback and rating to a special item.\n\nThe user can add feedback and rating to any item he want.\nThe user can add more than feedback and rating to different item\n\n<aside class=\"notice\">the user add feedback and rating to many different item</aside>"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  response: 200
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  response:
+                    type: integer
+                    example: 200
+      tags:
+        - 'Item Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                U_id:
+                  type: integer
+                  description: 'use to know the user'
+                  example: 16
+                feedback:
+                  type: string
+                  description: 'that is the feedback that the user want to get to the item'
+                  example: sed
+                rating:
+                  type: number
+                  description: 'that is the rate that the user want to get to the item'
+                  example: 266.05
+                It_id:
+                  type: integer
+                  description: 'use to know the item'
+                  example: 9
+              required:
+                - U_id
+                - feedback
+                - rating
+                - It_id
+      security: []
+  /api/place-order:
+    post:
+      summary: 'Place order'
+      description: 'recieve a cart and place an order with cart info'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  errNum: 200
+                  msg: 'Order placed'
+                  'order details':
+                    user_id: 3
+                    price: 0
+                    type_of_delivery: 'In Restaurant'
+                    updated_at: '2021-09-02T13:05:53.000000Z'
+                    created_at: '2021-09-02T13:05:53.000000Z'
+                    id: 11
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  errNum:
+                    type: integer
+                    example: 200
+                  msg:
+                    type: string
+                    example: 'Order placed'
+                  'order details':
+                    type: object
+                    example:
+                      user_id: 3
+                      price: 0
+                      type_of_delivery: 'In Restaurant'
+                      updated_at: '2021-09-02T13:05:53.000000Z'
+                      created_at: '2021-09-02T13:05:53.000000Z'
+                      id: 11
+      tags:
+        - 'Order Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cartID:
+                  type: integer
+                  description: 'The id of a valid cart to use for the order'
+                  example: 4
+                deliveryType:
+                  type: integer
+                  description: 'A number between 0-3 to specify the type of delivery from the list [''To Home'', ''To Car'', ''In Restaurant'', ''Take Away''].'
+                  example: 2
+              required:
+                - cartID
+                - deliveryType
+      security: []
+  /api/order-history:
+    post:
+      summary: 'History of the order.'
+      description: "This endpoint allows user to see all his order history.\n\nEnable user to see all his old orders as if his want to take the same order again\n\n<aside class=\"notice\">when the user want to see his histroy he can see it</aside>"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    price: '54.00'
+                    type_of_delivery: 'To Home'
+                    rating: null
+                    Feedback: null
+                  -
+                    price: '15.00'
+                    type_of_delivery: 'To Home'
+                    rating: null
+                    Feedback: null
+                  -
+                    price: '23.00'
+                    type_of_delivery: 'In Restaurant'
+                    rating: null
+                    Feedback: null
+      tags:
+        - 'Order Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: 'to know the user that we will get his data'
+                  example: 17
+              required:
+                - user_id
+      security: []
+  /api/feedback:
+    post:
+      summary: 'Add Feedback to the order.'
+      description: "This endpoint allows user to add feedback to his order.\n\nthe user can put a feedback about the order that he paid\n\n<aside class=\"notice\">The user add a feedback to an order </aside>"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  response: 200
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  response:
+                    type: integer
+                    example: 200
+      tags:
+        - 'Order Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_id:
+                  type: integer
+                  description: 'to know the order that will take feedback'
+                  example: 4
+                feedback:
+                  type: string
+                  description: 'that is the feedback that the user want to get to the order'
+                  example: esse
+              required:
+                - order_id
+                - feedback
+      security: []
+  /api/rating:
+    post:
+      summary: 'Add Rating to the order.'
+      description: "This endpoint allows user to add rate to his order.\n\nthe user can put a rate about the order that he paid\n\n<aside class=\"notice\">The user add a rate to an order </aside>"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  response: 200
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  response:
+                    type: integer
+                    example: 200
+      tags:
+        - 'Order Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_id:
+                  type: integer
+                  description: 'to know the order that will take rate'
+                  example: 10
+                rate:
+                  type: number
+                  description: 'that is the feedback that the user want to get to the order'
+                  example: !!float 3
+              required:
+                - order_id
+                - rate
+      security: []
+  /api/add-comment:
+    post:
+      summary: 'Add additional comment'
+      description: "This endpoint allows you to add additional comment to the order.\n\nThe user can add additional comment to the order\nEx: The customer wants the food spicy."
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\": true,\n \"response\": 200,\n \"data\": The whole order with the additional comment added to it\n}"
+      tags:
+        - 'Order Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 'required, the id to get the order that we want to add the additional comment to it'
+                  example: 19
+                additional_comment:
+                  type: string
+                  description: 'required, the additional comment statment that the user has entered'
+                  example: laudantium
+      security: []
+  /api/add-addresses:
+    post:
+      summary: 'Add address'
+      description: "This endpoint allows you to add address to the order.\n\nThe user can add favourite address to facilitate the usage for him\nand also can add multiple addresses in his account\n\n<aside class=\"notice\">when the user add new address it takes place of the old one</aside>"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\": true,\n \"response\": 200\n \"data\": The user details id,user_id,favourite_location,location after assigning his new location and favourite location\n}"
+      tags:
+        - 'address Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: 'to assign the address to him'
+                  example: 8
+                location:
+                  type: string
+                  description: 'The new address that the user wants to add'
+                  example: beatae
+                favourite_location:
+                  type: string
+                  description: 'The new favourite address if the user wanted to add one'
+                  example: doloribus
+              required:
+                - user_id
+                - location
+                - favourite_location
+      security: []
+  /api/add-fav-addresses:
+    post:
+      summary: 'Add favourite address'
+      description: "This endpoint allows you to add favourite address to the order.\n\nThe user can add favourite address to facilitate the usage for him\n\n<aside class=\"notice\">when the user add new favourite address it takes place of the old one</aside>"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\": true,\n \"response\": 200\n \"data\": The user details id,user_id,favourite_location,location after updating his favourite address\n}"
+      tags:
+        - 'address Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: 'to assign the address to him'
+                  example: 3
+                favourite_location:
+                  type: string
+                  description: 'The new favourite address that the user wants to add'
+                  example: ea
+              required:
+                - user_id
+                - favourite_location
+      security: []
+  /api/add-another-addresses:
+    post:
+      summary: 'Add another address'
+      description: "This endpoint allows you to add another address to the order differ from the old one he ordered by.\n\nThe user can add another address to facilitate the usage for him\n\n<aside class=\"notice\">when the user add new another address it takes place of the old one</aside>"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\": true,\n \"response\": 200,\n \"data\": The user details id,user_id,favourite_location,location after updating his address\n}"
+      tags:
+        - 'address Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: 'to assign the address to him'
+                  example: 15
+                location:
+                  type: string
+                  description: 'The new address that the user wants to add'
+                  example: architecto
+              required:
+                - user_id
+                - location
+      security: []
+tags:
+  -
+    name: 'Cart Management'
+    description: "\nAPIs for Creating and using carts"
+  -
+    name: 'Complaints Management'
+    description: "\nAPIs for adding or removing specific complaint, in addition to showing all the complaints found in the system"
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: 'Item Management'
+    description: "\nAPIs for placing item feedback and rating"
+  -
+    name: 'Order Management'
+    description: "\nAPIs for placing orders and modifying them"
+  -
+    name: 'address Management'
+    description: "\nAPIs for adding new address or updating old one for customers"

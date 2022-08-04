@@ -1,0 +1,2645 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "127.0.0.1"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "f114f52c-5452-4cf1-b70d-026d72876725",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Cart Management",
+            "description": "\nAPIs for Creating and using carts",
+            "item": [
+                {
+                    "name": "Create cart",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/create-cart",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/create-cart"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"User_id\":13}"
+                        },
+                        "description": "Create a new cart to place items in",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": true,\n  \"errNum\": 200,\n  \"msg\": \"cart created\",\n  \"cart details\": {\n      \"user_id\": \"3\",\n      \"total_price\": 0,\n       \"status\": false,\n       \"updated_at\": \"2021-09-02T13:04:33.000000Z\",\n       \"created_at\": \"2021-09-02T13:04:33.000000Z\",\n       \"id\": 9\n   }\n}",
+                            "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add to cart",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/add-to-cart",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/add-to-cart"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"cart_id\":5,\"item_id\":19}"
+                        },
+                        "description": "add a new item to the cart",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"errNum\": 200,\n \"msg\": \"Item Added Successfully\",\n \"cart details\": {\n     \"id\": 5,\n     \"user_id\": 3,\n     \"total_price\": 66,\n     \"status\": \"false\",\n     \"created_at\": \"2021-08-19T09:51:01.000000Z\",\n     \"updated_at\": \"2021-09-02T12:30:43.000000Z\"\n }\n}",
+                            "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove from cart",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/remove-from-cart",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/remove-from-cart"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"cart_id\":2,\"item_id\":11}"
+                        },
+                        "description": "Remove an item from the cart",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List cart items",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/view-cart",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/view-cart"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"cart_id\":2}"
+                        },
+                        "description": "lists all items in the cart and their quantity",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Complaints Management",
+            "description": "\nAPIs for adding or removing specific complaint, in addition to showing all the complaints found in the system",
+            "item": [
+                {
+                    "name": "Add complaint",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/add-complaint",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/add-complaint"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"item_id\":6,\"user_id\":17,\"complaint\":\"non\"}"
+                        },
+                        "description": "This endpoint allows you to add complaint to specific item in the order.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"response\": 200\n \"data\": The whole complaint after adding it\n}",
+                            "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove complaint",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/remove-complaint",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/remove-complaint"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"item_id\":3,\"user_id\":19,\"complaint\":\"quo\"}"
+                        },
+                        "description": "This endpoint allows you to remove complaint from specific item in the order.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"response\": 200\n}",
+                            "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Show all the complaints found in the system.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/show-complaints",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/show-complaints"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to see all the complaints found in the system.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n complaints\n}",
+                            "name": "success"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display the user registration view.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/register",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/register"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"message\":\"this is the user register form view\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle an incoming user registration request.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/register",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"aut\",\"last_name\":\"eligendi\",\"email\":\"iste\",\"password\":\"qui\",\"password_confirmation\":\"sed\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"message\": \"Successfully created your account, just verify it at your email !\",\r\n    \"user\": {\r\n        \"first_name\": \"mariam\",\r\n        \"last_name\": \"elkhashab\",\r\n        \"email\": \"m@hotmail.com\",\r\n        \"updated_at\": \"2021-08-30T13:28:25.000000Z\",\r\n        \"created_at\": \"2021-08-30T13:28:25.000000Z\",\r\n        \"id\": 25\r\n    },\r\n    \"AccessToken:\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTYzMDMzMDEwNSwiZXhwIjoxNjMwMzMzNzA1LCJuYmYiOjE2MzAzMzAxMDUsImp0aSI6ImFQV1ExUmZyTDJhZXl2RmEiLCJzdWIiOjI1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Gb6pauP14JnqtlmZ4-GIrUJJwY34HGqmwGyXTr35zKI\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the user login view.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/login"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"message\":\"this is the user login form page\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle an incoming user login request.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"beatae\",\"password\":\"consequatur\",\"remember\":true}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"message\": \"logged in successfully\",\r\n    \"AccessToken:\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMDMzMDU2NSwiZXhwIjoxNjMwMzM0MTY1LCJuYmYiOjE2MzAzMzA1NjUsImp0aSI6Ik1GQndmSzl3OVM5T1UyWEkiLCJzdWIiOjI1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.xxpKgqW5NUZ9OXFXy3AHIPw22H_ivI3KOgblbKDAaoc\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the password reset link request view.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/forgot-password",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/forgot-password"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "57"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 201,
+                            "body": "{\"msg\":\"This is the password reset link request form\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle an incoming password reset link request.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/forgot-password",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/forgot-password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"est\"}"
+                        },
+                        "description": "This api handles the form submission\nWe will send the password reset link to this user. Once we have attempted\nto send the link, we will examine the response then see the message we\nneed to show to the user. Finally, we'll send out a proper response.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\",\n\"We have emailed your password reset link!\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the password reset view.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reset-password\/:token",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/reset-password\/:token",
+                            "variable": [
+                                {
+                                    "id": "token",
+                                    "key": "token",
+                                    "value": "maiores",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "should contain email, new password & password confirmation fields",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "56"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 201,
+                            "body": "{\"msg\":\"This is the reset password form\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle an incoming new password request.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reset-password",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/reset-password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"token\":\"veniam\",\"emai\":\"placeat\",\"password\":\"voluptatem\",\"password_confirmation\":\"eveniet\"}"
+                        },
+                        "description": "This api handles the form submission\nHere we will attempt to reset the user's password. If it is successful we\nwill update the password on an actual user model and persist it to the\ndatabase. Otherwise we will parse the error and return the response.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"msg\": \"this is the user login form, login with the new password \",\n\"0\": \"status\",\n\"1\": \"Your password has been reset!\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the user email verification prompt.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/verify-email",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/verify-email"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Mark the authenticated user's email address as verified.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/verify-email\/:id\/:hash",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/verify-email\/:id\/:hash",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "dolore",
+                                    "description": "The ID of the verify email."
+                                },
+                                {
+                                    "id": "hash",
+                                    "key": "hash",
+                                    "value": "qui",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n   \"msg\": \"Successfully verified\",\n  \"0\": 201\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Send a new email verification notification.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/email\/verification-notification",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/email\/verification-notification"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"msg\": \"verification-link-sent\",\n\"0\": 201\n  }",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "User logout",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Destroy an authenticated user session."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the admin login view.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/login"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "55"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"message\":\"this is the admin login form page\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle an incoming admin login request.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"totam\",\"password\":\"non\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"message\": \"logged in successfully\",\r\n    \"AccessToken:\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hZG1pblwvbG9naW4iLCJpYXQiOjE2MzAzMzE5NTIsImV4cCI6MTYzMDMzNTU1MiwibmJmIjoxNjMwMzMxOTUyLCJqdGkiOiJRQjc0UnNIVjBKaldadG9GIiwic3ViIjoxLCJwcnYiOiJkZjg4M2RiOTdiZDA1ZWY4ZmY4NTA4MmQ2ODZjNDVlODMyZTU5M2E5In0.ASySa0_mm7wqeSdAsAhpWGkuD2_oAafoduHBnh4tsJs\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "getting all admins in the database",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/admins",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/admins"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  {\n  \"id\": \"1\" ,\n  \"email\":\"steve@gmail.com\" ,\n  \"username\":\"steve\" ,\n  \"superadmin\":\"1\"\n  }\n  {\n  \"id\": \"2\" ,\n  \"email\":\"sara@gmail.com\" ,\n  \"username\":\"sara\" ,\n  \"superadmin\":\"0\"\n  }\n}",
+                            "name": "the user is a superadmin"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"unauthorized\"}",
+                            "name": "the user isn't a superadmin"
+                        }
+                    ]
+                },
+                {
+                    "name": "getting a certain admin in the database by the id",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/admins\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/admins\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "13",
+                                    "description": "The ID of the admin"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": \"1\" ,\n  \"email\":\"steve@gmail.com\" ,\n  \"username\":\"steve\" ,\n  \"superadmin\":\"1\"\n  }",
+                            "name": "the user is a superadmin"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"unauthorized\"}",
+                            "name": "the user isn't a superadmin"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "",
+                            "name": "the admin by the given id is not found"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the admin registration view.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/register",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/register"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle an incoming admin registration request.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/register",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"suscipit\",\"username\":\"quis\",\"password\":\"repellendus\",\"password_confirmation\":\"minus\",\"superadmin\":false}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"message\": \"registered successfully\",\r\n    \"AccessToken:\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hZG1pblwvcmVnaXN0ZXIiLCJpYXQiOjE2MzAzMzE5OTQsImV4cCI6MTYzMDMzNTU5NCwibmJmIjoxNjMwMzMxOTk0LCJqdGkiOiJwMGFQcVpUUlQyYW5rT3RjIiwic3ViIjoyNCwicHJ2IjoiZGY4ODNkYjk3YmQwNWVmOGZmODUwODJkNjg2YzQ1ZTgzMmU1OTNhOSJ9.FuZ92MotjJPJv7ebj15zv4Do1ER0_mwUKXhW8J9mDK8\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Admin logout",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/logout",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Destroy an authenticated admin session (logout)."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "updating a certain admin with id from the database",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/updateadmin\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/updateadmin\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "13",
+                                    "description": "The ID of the admin"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"superadmin\":true}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "",
+                            "name": "the user is a superadmin"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"unauthorized\"}",
+                            "name": "the user isn't a superadmin"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "",
+                            "name": "the admin by the given id was not found"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "",
+                            "name": "The request was well formed but was unable to be followed due to a validation error"
+                        }
+                    ]
+                },
+                {
+                    "name": "removing a certain admin with id from the database",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/removeadmin\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/removeadmin\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "6",
+                                    "description": "The ID of the admin"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "",
+                            "name": "the user is a superadmin"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"unauthorized\"}",
+                            "name": "the user isn't a superadmin"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "",
+                            "name": "the admin with the given id was not found"
+                        }
+                    ]
+                },
+                {
+                    "name": "adding category to the database",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/addcategory",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/addcategory"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"category_name\":\"et\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "",
+                            "name": "the user is an admin and the inputs are satisfied with the validation rules"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"unauthorized\"}",
+                            "name": "the user isn't an admin"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "",
+                            "name": "The request was well formed but was unable to be followed due to a validation error"
+                        }
+                    ]
+                },
+                {
+                    "name": "removing a certain category with id from the database",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/removecategory\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/removecategory\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "18",
+                                    "description": "The ID of the category"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "",
+                            "name": "the user is an admin"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"unauthorized\"}",
+                            "name": "the user isn't an admin"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "",
+                            "name": "the category with the given id is not found"
+                        }
+                    ]
+                },
+                {
+                    "name": "updating a certain category with id in the database",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/updatecategory\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/updatecategory\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "15",
+                                    "description": "The ID of the category"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"category_name\":\"maiores\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "",
+                            "name": "the user is an admin and the inputs are satisfied with the validation rules"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"unauthorized\"}",
+                            "name": "the user isn't an admin"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "",
+                            "name": "the category with the given id was not found"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "",
+                            "name": "The request was well formed but was unable to be followed due to a validation error"
+                        }
+                    ]
+                },
+                {
+                    "name": "adding item to the database",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/additem",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/additem"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "item_name",
+                                    "value": "ipsum",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "category_id",
+                                    "value": 12,
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "natus",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "offer",
+                                    "value": "tempora",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "offer_end_date",
+                                    "value": "deleniti",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "file_path",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "",
+                            "name": "the user is an admin and the inputs are satisfied with the validation rules"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"unauthorized\"}",
+                            "name": "the user isn't an admin"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "",
+                            "name": "The request was well formed but was unable to be followed due to a validation error"
+                        }
+                    ]
+                },
+                {
+                    "name": "removing a certain item with id from the database",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/removeitem\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/removeitem\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "19",
+                                    "description": "The ID of the item"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "",
+                            "name": "the user is an admin"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"unauthorized\"}",
+                            "name": "the user isn't an admin"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "",
+                            "name": "the item with the given id is not found"
+                        }
+                    ]
+                },
+                {
+                    "name": "updating a certain item with id in the database",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/updateitem\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/updateitem\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "16",
+                                    "description": "The ID of the item"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "",
+                            "name": "the user is an admin and the inputs are satisfied with the validation rules"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"unauthorized\"}",
+                            "name": "the user isn't an admin"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "",
+                            "name": "the item with the given id was not found"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "",
+                            "name": "The request was well formed but was unable to be followed due to a validation error"
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the admin email verification prompt.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/verify-email",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/verify-email"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Mark the authenticated admin's email address as verified.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/verify-email\/:id\/:hash",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/verify-email\/:id\/:hash",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "non",
+                                    "description": "The ID of the verify email."
+                                },
+                                {
+                                    "id": "hash",
+                                    "key": "hash",
+                                    "value": "accusantium",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Send a new email verification notification.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/email\/verification-notification",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/email\/verification-notification"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "getting all orders in database",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/show",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/show"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "scenario=\n{\n\n\n \"id\": 1,\n \"user_id\": 1,\n\n\"price\": \"20.20\",\n\"type_of_delivery\": \"Take Away\",\n\"created_at\": null,\n\"updated_at\": null,\n\"rating\": \"5.00\",\n\"Feedback\": \"good\"\n },\n{\n\"id\": 2,\n\"user_id\": 1,\n\"price\": \"20.20\",\n\"type_of_delivery\": \"Take Away\",\n\"created_at\": null,\n\"updated_at\": null,\n\"rating\": \"5.00\",\n\"Feedback\": \"good\"\n\n*},",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "get all the orders of a specific user",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/search",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/search"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "get the total number of orders",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/total",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/total"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/admin\/piechart",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/piechart",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/piechart"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "get the 4 most selling item",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/sort",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/sort"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Invoke the controller method.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/add",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/add"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "create a new table with the state",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/add",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/add"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"table\":\"voluptatibus\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "shows all the tables with their state",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/list",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/list"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "select the wanted table to change it's state",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/update\/:id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/update\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "12",
+                                    "description": "The ID of the selected table"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "update the table state",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admin\/update",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admin\/update"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":\"non\",\"state\":\"debitis\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/store",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/store"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/destroy",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/destroy"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Item Management",
+            "description": "\nAPIs for placing item feedback and rating",
+            "item": [
+                {
+                    "name": "Add item Feedback Rating to the order.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/review-iteam",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/review-iteam"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"U_id\":16,\"feedback\":\"sed\",\"rating\":266.05,\"It_id\":9}"
+                        },
+                        "description": "This endpoint allows user to add feedback and rating to a special item.\n\nThe user can add feedback and rating to any item he want.\nThe user can add more than feedback and rating to different item\n\n<aside class=\"notice\">the user add feedback and rating to many different item<\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"response\": 200\n}",
+                            "name": "success"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Order Management",
+            "description": "\nAPIs for placing orders and modifying them",
+            "item": [
+                {
+                    "name": "Place order",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/place-order",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/place-order"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"cartID\":4,\"deliveryType\":2}"
+                        },
+                        "description": "recieve a cart and place an order with cart info",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": true,\n  \"errNum\": 200,\n  \"msg\": \"Order placed\",\n  \"order details\": {\n      \"user_id\": 3,\n      \"price\": 0,\n      \"type_of_delivery\": \"In Restaurant\",\n      \"updated_at\": \"2021-09-02T13:05:53.000000Z\",\n      \"created_at\": \"2021-09-02T13:05:53.000000Z\",\n      \"id\": 11\n  }\n}",
+                            "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "History of the order.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/order-history",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/order-history"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":17}"
+                        },
+                        "description": "This endpoint allows user to see all his order history.\n\nEnable user to see all his old orders as if his want to take the same order again\n\n<aside class=\"notice\">when the user want to see his histroy he can see it<\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n {\n     \"price\": \"54.00\",\n     \"type_of_delivery\": \"To Home\",\n     \"rating\": null,\n     \"Feedback\": null\n },\n {\n   \"price\": \"15.00\",\n   \"type_of_delivery\": \"To Home\",\n   \"rating\": null,\n   \"Feedback\": null\n },\n {\n   \"price\": \"23.00\",\n   \"type_of_delivery\": \"In Restaurant\",\n   \"rating\": null,\n   \"Feedback\": null\n }\n]",
+                            "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add Feedback to the order.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/feedback",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/feedback"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"order_id\":4,\"feedback\":\"esse\"}"
+                        },
+                        "description": "This endpoint allows user to add feedback to his order.\n\nthe user can put a feedback about the order that he paid\n\n<aside class=\"notice\">The user add a feedback to an order <\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"response\": 200\n}",
+                            "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add Rating to the order.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/rating",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/rating"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"order_id\":10,\"rate\":3}"
+                        },
+                        "description": "This endpoint allows user to add rate to his order.\n\nthe user can put a rate about the order that he paid\n\n<aside class=\"notice\">The user add a rate to an order <\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"response\": 200\n}",
+                            "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add additional comment",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/add-comment",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/add-comment"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":19,\"additional_comment\":\"laudantium\"}"
+                        },
+                        "description": "This endpoint allows you to add additional comment to the order.\n\nThe user can add additional comment to the order\nEx: The customer wants the food spicy.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"response\": 200,\n \"data\": The whole order with the additional comment added to it\n}",
+                            "name": "success"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "address Management",
+            "description": "\nAPIs for adding new address or updating old one for customers",
+            "item": [
+                {
+                    "name": "Add address",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/add-addresses",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/add-addresses"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":8,\"location\":\"beatae\",\"favourite_location\":\"doloribus\"}"
+                        },
+                        "description": "This endpoint allows you to add address to the order.\n\nThe user can add favourite address to facilitate the usage for him\nand also can add multiple addresses in his account\n\n<aside class=\"notice\">when the user add new address it takes place of the old one<\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"response\": 200\n \"data\": The user details id,user_id,favourite_location,location after assigning his new location and favourite location\n}",
+                            "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add favourite address",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/add-fav-addresses",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/add-fav-addresses"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":3,\"favourite_location\":\"ea\"}"
+                        },
+                        "description": "This endpoint allows you to add favourite address to the order.\n\nThe user can add favourite address to facilitate the usage for him\n\n<aside class=\"notice\">when the user add new favourite address it takes place of the old one<\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"response\": 200\n \"data\": The user details id,user_id,favourite_location,location after updating his favourite address\n}",
+                            "name": "success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Add another address",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/add-another-addresses",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/add-another-addresses"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":15,\"location\":\"architecto\"}"
+                        },
+                        "description": "This endpoint allows you to add another address to the order differ from the old one he ordered by.\n\nThe user can add another address to facilitate the usage for him\n\n<aside class=\"notice\">when the user add new another address it takes place of the old one<\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"response\": 200,\n \"data\": The user details id,user_id,favourite_location,location after updating his address\n}",
+                            "name": "success"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
